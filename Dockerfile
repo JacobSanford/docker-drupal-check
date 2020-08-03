@@ -29,7 +29,10 @@ RUN apk --no-cache add \
 
 # Install drupal.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-  composer create-project drupal-composer/drupal-project /drupal --no-interaction --stability=dev
+  composer create-project drupal-composer/drupal-project /drupal --no-interaction --stability=dev --no-install && \
+  cd /drupal && \
+  composer require zaporylie/composer-drupal-optimizations:^1.0 && \
+  composer install
 
 # Install drupal-check.
 RUN curl -sLO  https://github.com/mglaman/drupal-check/releases/latest/download/drupal-check.phar && \
