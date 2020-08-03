@@ -32,7 +32,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
   composer create-project drupal-composer/drupal-project /drupal --no-interaction --stability=dev --no-install && \
   cd /drupal && \
   composer require zaporylie/composer-drupal-optimizations:^1.0 && \
-  composer install
+  COMPOSER_MEMORY_LIMIT=-1 composer install
 
 # Install drupal-check.
 RUN curl -sLO  https://github.com/mglaman/drupal-check/releases/latest/download/drupal-check.phar && \
