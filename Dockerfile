@@ -28,9 +28,9 @@ RUN apk --no-cache add \
   php7-zlib
 
 # Install drupal.
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.17 && \
   composer global require zaporylie/composer-drupal-optimizations:^1.0 && \
-  composer create-project drupal-composer/drupal-project /drupal --no-interaction --dev --prefer-dist
+  php -d memory_limit=-1 /usr/local/bin/composer create-project drupal-composer/drupal-project:8.x-dev /drupal --no-interaction --dev --prefer-dist
 
 # Install drupal-check.
 RUN curl -sLO  https://github.com/mglaman/drupal-check/releases/latest/download/drupal-check.phar && \
