@@ -35,6 +35,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install drupal-check.
 RUN curl -sLO  https://github.com/mglaman/drupal-check/releases/latest/download/drupal-check.phar && \
   chmod 755 drupal-check.phar && \
-  mv drupal-check.phar /usr/local/bin/drupal-check
+  mv drupal-check.phar /usr/local/bin/drupal-check && \
+  chmod +x /usr/local/bin/drupal-check
 
 ENTRYPOINT ["drupal-check"]
