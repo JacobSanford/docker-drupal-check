@@ -29,7 +29,8 @@ RUN apk --no-cache add \
 
 # Install drupal.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.17 && \
-  php -d memory_limit=-1 /usr/local/bin/composer create-project drupal-composer/drupal-project:8.x-dev /drupal --no-interaction && \
+  echo 'memory_limit = -1' >> /etc/php7/conf.d/docker-php-memlimit.ini && \
+  /usr/local/bin/composer create-project drupal-composer/drupal-project:8.x-dev /drupal --no-interaction && \
   composer global require mglaman/drupal-check
 
 WORKDIR /drupal/web
