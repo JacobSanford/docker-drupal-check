@@ -21,6 +21,7 @@ RUN apk --no-cache add \
   php7-phar \
   php7-session \
   php7-simplexml \
+  php7-snmp \
   php7-tokenizer \
   php7-xml \
   php7-xmlwriter \
