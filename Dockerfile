@@ -29,7 +29,7 @@ RUN apk --no-cache add \
   php7-zlib \
   rsync
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.17 && \
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
   echo 'memory_limit = -1' >> /etc/php7/conf.d/docker-php-memlimit.ini && \
   composer global require mglaman/drupal-check --no-progress --no-suggest
 
